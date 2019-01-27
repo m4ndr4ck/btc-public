@@ -61,6 +61,21 @@ export class ComprarComponent implements OnInit {
                     }, 0);
                 });
 
+                $("#real").focusout(function() {
+                    setTimeout(function() {
+                        //var $real = $("#real").val().replace("R$", "")
+                        //		.replace(",", ".");
+                        //var $valorbtc = $real / ${cotacaoCompraSemBRL};
+                        var $real = parseInt($("#real").val().replace("R$", "").replace('.','').replace(' ',''));
+                        console.log($real);
+                        var $valorbtc = ($real*100000000)/(15000*100000000);
+                        $('#btc').val($valorbtc.toLocaleString('pt-BR', {
+                            maximumSignificantDigits : 6
+                        }));
+                    }, 0);
+                });
+
+                $("#real").maskMoney();
 
             });
     }

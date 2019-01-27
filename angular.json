@@ -26,7 +26,8 @@
               "src/styles.css"
             ],
             "scripts": ["./node_modules/jquery/dist/jquery.js",
-                        "./node_modules/jquery-editable-select/dist/jquery-editable-select.js"
+                        "./node_modules/jquery-editable-select/dist/jquery-editable-select.js",
+                        "./node_modules/jquery-maskmoney/dist/jquery.maskMoney.js"
             ]
           },
           "configurations": {
