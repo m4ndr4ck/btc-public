@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/jquery/dist/jquery.js",
+                        "./node_modules/jquery-editable-select/dist/jquery-editable-select.js"
+            ]
           },
           "configurations": {
             "production": {

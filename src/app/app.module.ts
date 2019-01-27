@@ -7,14 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './views/home/home.component';
+import { ContactComponent } from './views/contact/contact.component';
+import {ComprarComponent} from "./views/comprar-bitcoin/comprar.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ContactComponent
+    ComprarComponent
   ],
   imports: [
     BrowserModule,

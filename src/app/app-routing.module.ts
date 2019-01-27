@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ContactComponent } from './contact/contact.component';
+import { HomeComponent } from './views/home/home.component';
+import { ContactComponent } from './views/contact/contact.component';
+import {ComprarComponent} from "./views/comprar-bitcoin/comprar.component";
 
 const routes: Routes = [
   {
@@ -10,8 +11,8 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'contact',
-    component: ContactComponent
+    path: 'comprar-bitcoin',
+    component: ComprarComponent
   },
   /**{
     path: 'users',
