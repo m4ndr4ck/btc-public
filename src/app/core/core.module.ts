@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { UserService } from './services/user.service';
+import { RateService } from './services/rate.service';
 
 @NgModule({
   imports: [
@@ -12,7 +12,7 @@ import { UserService } from './services/user.service';
     RouterModule
   ],
   providers: [
-    UserService
+      RateService
   ],
   declarations: [
     HeaderComponent,

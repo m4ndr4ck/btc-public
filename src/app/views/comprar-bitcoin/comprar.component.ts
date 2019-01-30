@@ -1,22 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import {RateService} from "../../core/services/rate.service";
 
 declare var $ : any
 
 @Component({
     selector: 'app-comprar',
     templateUrl: 'comprar.component.html',
+    providers:  [ RateService ],
     styles: []
 })
 export class ComprarComponent implements OnInit {
-    name: string;
-    email: string;
-    message: string;
+    rate:any = { value: ''};
+    test: string;
 
-    constructor() {}
+    constructor(
+        private rateService: RateService,
+    ) {}
 
-    ngOnInit() {}
+    ngOnInit(){
+        this.getRate();
+    }
+
+    getRate() {
+        this.rateService.getRate().subscribe((data: {}) => {
+            console.log(data);
+            this.rate = data;
+            this.test = this.rate["value"];
+
+        });
+    }
+
+
 
     ngAfterViewInit() {
+        let jQueryInstance = this;
+        console.log(jQueryInstance.test);
         $(document).ready(
             function() {
                 $.each([ 'basic', 'default', 'slide', 'fade', 'appendTo',
@@ -67,8 +85,8 @@ export class ComprarComponent implements OnInit {
                         //		.replace(",", ".");
                         //var $valorbtc = $real / ${cotacaoCompraSemBRL};
                         var $real = parseInt($("#real").val().replace("R$", "").replace('.','').replace(' ',''));
-                        console.log($real);
-                        var $valorbtc = ($real*100000000)/(15000*100000000);
+                        console.log(this.test);
+                        var $valorbtc = ($real*100000000)/(this.test*100000000);
                         $('#btc').val($valorbtc.toLocaleString('pt-BR', {
                             maximumSignificantDigits : 6
                         }));
@@ -78,15 +96,6 @@ export class ComprarComponent implements OnInit {
                 $("#real").maskMoney();
 
             });
-    }
-
-    /**
-     * Process the form we have. Send to whatever backend
-     * Only alerting for now
-     */
-    processForm() {
-        const allInfo = `My name is ${this.name}. My email is ${this.email}. My message is ${this.message}`;
-        alert(allInfo);
     }
 
 }
