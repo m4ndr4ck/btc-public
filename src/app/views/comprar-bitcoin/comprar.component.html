@@ -31,7 +31,7 @@
                     <input id="btc" name="bitcoins" type="text"
                            class="form-control input" /> <br>
 
-                    <div style="padding-top: 0px;padding-bottom: 20px;font-weight: bold;font-size: 16px;">1 BTC = R$ 10.000</div>
+                    <div style="padding-top: 0px;padding-bottom: 20px;font-weight: bold;font-size: 16px;">1 BTC = {{value | currency:'R$':true}}</div>
 
                     <button type="button"
                             onclick="window.open('http://btcmoedas.com.br/login');"

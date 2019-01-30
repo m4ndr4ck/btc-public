@@ -1,44 +1,64 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RateService} from "../../core/services/rate.service";
+import {validate} from "codelyzer/walkerFactory/walkerFn";
 
-declare var $ : any
+declare var $: any;
+let test: any;
 
 @Component({
     selector: 'app-comprar',
     templateUrl: 'comprar.component.html',
-    providers:  [ RateService ],
+    providers: [RateService],
     styles: []
 })
+
 export class ComprarComponent implements OnInit {
-    rate:any = { value: ''};
-    test: string;
+    rate: any = {value: ''};
+    value: string;
+
 
     constructor(
         private rateService: RateService,
-    ) {}
-
-    ngOnInit(){
-        this.getRate();
-    }
-
-    getRate() {
-        this.rateService.getRate().subscribe((data: {}) => {
-            console.log(data);
+    ) {
+        /**this.rate =  this.rateService.getRate().toPromise().then((data: {}) => {
+            //console.log(data);
             this.rate = data;
-            this.test = this.rate["value"];
+            this.value = this.rate["value"];
+        });*/
 
-        });
     }
 
 
+    async getRate() {
+        this.rate = await this.rateService.getRate().toPromise().then((data: {}) => {
+            //console.log(data);
+            this.rate = data;
+            this.value = this.rate["value"];
+        });
+        console.log('No issues, I will wait until promise is resolved..');
+        console.log(this.value);
+    }
 
-    ngAfterViewInit() {
-        let jQueryInstance = this;
-        console.log(jQueryInstance.test);
+    ngOnInit(): void {
+
+    }
+
+
+    async ngAfterViewInit() {
+        this.rate = await this.rateService.getRate().toPromise().then((data: {}) => {
+            //console.log(data);
+            this.rate = data;
+            this.value = this.rate["value"];
+        });
+        console.log('No issues, I will wait until promise is resolved..');
+        //console.log(this.value);
+        let test = this;
         $(document).ready(
-            function() {
-                $.each([ 'basic', 'default', 'slide', 'fade', 'appendTo',
-                    'no-filtering', 'html' ], function(i, id) {
+            function () {
+                console.log(test.value);
+                //console.log(test.value);
+                $.each(['basic', 'default', 'slide', 'fade', 'appendTo',
+                    'no-filtering', 'html'], function (i, id) {
                     var $place = $('#' + id + '-place');
                     var $select = $('#base').clone().attr("id", "real").attr(
                         "name", "valorPagamento").attr("data-thousands",
@@ -51,44 +71,44 @@ export class ComprarComponent implements OnInit {
 
                 $('#select').editableSelect().on(
                     'select.editable-select',
-                    function(e, li) {
+                    function (e, li) {
                         $('#last-selected').html(
                             li.val() + '. ' + li.text());
                     });
                 $('#real').on(
                     'keydown',
-                    function() {
-                        setTimeout(function() {
+                    function () {
+                        setTimeout(function () {
                             var $real = $("#real").val().replace("R$", "")
                                 .replace(",", ".");
-                            var $valorbtc = $real / 15000;
+                            var $valorbtc = $real / parseInt(test.value);
                             $('#btc').val(
                                 $valorbtc.toLocaleString('pt-BR', {
-                                    maximumSignificantDigits : 6
+                                    maximumSignificantDigits: 6
                                 }));
                         }, 0);
                     });
-                $('#btc').on('keydown', function() {
-                    setTimeout(function() {
-                        var $btc = $("#btc").val().replace(",", ".") * 15000;
+                $('#btc').on('keydown', function () {
+                    setTimeout(function () {
+                        var $btc = $("#btc").val().replace(",", ".") * parseInt(test.value);
                         var $brl = "R$ ";
                         $('#real').val($brl + $btc.toLocaleString('pt-BR', {
-                            maximumFractionDigits : 2,
-                            minimumFractionDigits : 2
+                            maximumFractionDigits: 2,
+                            minimumFractionDigits: 2
                         }));
                     }, 0);
                 });
 
-                $("#real").focusout(function() {
-                    setTimeout(function() {
+                $("#real").focusout(function () {
+                    setTimeout(function () {
                         //var $real = $("#real").val().replace("R$", "")
                         //		.replace(",", ".");
                         //var $valorbtc = $real / ${cotacaoCompraSemBRL};
-                        var $real = parseInt($("#real").val().replace("R$", "").replace('.','').replace(' ',''));
-                        console.log(this.test);
-                        var $valorbtc = ($real*100000000)/(this.test*100000000);
+                        var $real = parseInt($("#real").val().replace("R$", "").replace('.', '').replace(' ', ''));
+                        //console.log($(test));
+                        var $valorbtc = ($real * 100000000) / (parseInt(test.value) * 100000000);
                         $('#btc').val($valorbtc.toLocaleString('pt-BR', {
-                            maximumSignificantDigits : 6
+                            maximumSignificantDigits: 6
                         }));
                     }, 0);
                 });
@@ -96,6 +116,7 @@ export class ComprarComponent implements OnInit {
                 $("#real").maskMoney();
 
             });
+
     }
 
 }
