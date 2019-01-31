@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {RateService} from "../../core/services/rate.service";
-import {validate} from "codelyzer/walkerFactory/walkerFn";
 
 declare var $: any;
 let test: any;
@@ -19,15 +18,7 @@ export class ComprarComponent implements OnInit {
 
     constructor(
         private rateService: RateService,
-    ) {
-        /**this.rate =  this.rateService.getRate().toPromise().then((data: {}) => {
-            //console.log(data);
-            this.rate = data;
-            this.value = this.rate["value"];
-        });*/
-
-    }
-
+    ) {}
 
     async getRate() {
         this.rate = await this.rateService.getRate().toPromise().then((data: {}) => {

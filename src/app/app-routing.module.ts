@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './views/home/home.component';
 import {ComprarComponent} from "./views/comprar-bitcoin/comprar.component";
 import {RateService} from "./core/services/rate.service";
+import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'comprar-bitcoin',
     component: ComprarComponent
+  },
+  {
+    path: 'como-funciona',
+    component: ComoFuncionaComponent
   },
   /**{
     path: 'users',
