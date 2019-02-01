@@ -1,0 +1,18 @@
+<div class="login">
+    <div align="center" style="display:none"><img src="/resources/img/bitcoin.png" style="width: 180px;"></div>
+    <form method="POST" action="/login">
+        <h1>Login</h1>
+        <!--   <div class="form-group ${error != null ? 'has-error' : ''}"> -->
+        <span></span>
+        <input id="login" name="cpf" value="" type="text" class="form-control" placeholder="CPF"
+               autofocus="true"/>
+        <input id="login" name="senha" value="" type="password" class="form-control" placeholder="Senha"/>
+        <input type="hidden" name="" value=""/>
+        <button class="btn btn-primary btn-block btn-large" type="submit">Entrar</button>
+        <!--   </div> -->
+    </form>
+    <div><a href="/cadastro" class="linkCadastro">Fazer novo cadastro</a></div>
+    <div style="padding-top: 40px;text-align: center;"><a href="/recuperar-senha" style="text-decoration: none;font-size: 12px;color: white;">
+        Esqueceu sua senha?</a>
+    </div>
+</div>

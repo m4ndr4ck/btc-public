@@ -15,6 +15,7 @@ import {registerLocaleData} from "@angular/common";
 import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
 import {ContatoComponent} from "./views/contato/contato.component";
 import {SobreComponent} from "./views/sobre/sobre.component";
+import {LoginComponent} from "./views/login/login.component";
 
 export function init(rate: RateService) {
     return () => rate.getRate();
@@ -29,6 +30,7 @@ registerLocaleData(localePt, 'pt');
     ComoFuncionaComponent,
     ContatoComponent,
     SobreComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {RateService} from "./core/services/rate.service";
 import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
 import {ContatoComponent} from "./views/contato/contato.component";
 import {SobreComponent} from "./views/sobre/sobre.component";
+import {LoginComponent} from "./views/login/login.component";
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'sobre',
     component: SobreComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   /**{
     path: 'users',
