@@ -4,6 +4,7 @@ import { HomeComponent } from './views/home/home.component';
 import {ComprarComponent} from "./views/comprar-bitcoin/comprar.component";
 import {RateService} from "./core/services/rate.service";
 import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
+import {ContatoComponent} from "./views/contato/contato.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'como-funciona',
     component: ComoFuncionaComponent
+  },
+  {
+    path: 'contato',
+    component: ContatoComponent
   },
   /**{
     path: 'users',

@@ -13,6 +13,7 @@ import {ComprarComponent} from "./views/comprar-bitcoin/comprar.component";
 import {RateService} from "./core/services/rate.service";
 import {registerLocaleData} from "@angular/common";
 import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
+import {ContatoComponent} from "./views/contato/contato.component";
 
 export function init(rate: RateService) {
     return () => rate.getRate();
@@ -24,7 +25,8 @@ registerLocaleData(localePt, 'pt');
     AppComponent,
     HomeComponent,
     ComprarComponent,
-    ComoFuncionaComponent
+    ComoFuncionaComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RateService} from "../../core/services/rate.service";
 
-declare var $: any;
-let test: any;
-
 @Component({
     selector: 'app-comofunciona',
     templateUrl: 'comoFunciona.component.html',
