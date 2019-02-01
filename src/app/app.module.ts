@@ -14,6 +14,7 @@ import {RateService} from "./core/services/rate.service";
 import {registerLocaleData} from "@angular/common";
 import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
 import {ContatoComponent} from "./views/contato/contato.component";
+import {SobreComponent} from "./views/sobre/sobre.component";
 
 export function init(rate: RateService) {
     return () => rate.getRate();
@@ -26,7 +27,8 @@ registerLocaleData(localePt, 'pt');
     HomeComponent,
     ComprarComponent,
     ComoFuncionaComponent,
-    ContatoComponent
+    ContatoComponent,
+    SobreComponent,
   ],
   imports: [
     BrowserModule,

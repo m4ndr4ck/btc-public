@@ -5,6 +5,7 @@ import {ComprarComponent} from "./views/comprar-bitcoin/comprar.component";
 import {RateService} from "./core/services/rate.service";
 import {ComoFuncionaComponent} from "./views/como-funciona/comoFunciona.component";
 import {ContatoComponent} from "./views/contato/contato.component";
+import {SobreComponent} from "./views/sobre/sobre.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'contato',
     component: ContatoComponent
+  },
+  {
+    path: 'sobre',
+    component: SobreComponent
   },
   /**{
     path: 'users',
